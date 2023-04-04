@@ -6,18 +6,28 @@ import android.net.Uri
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.barcode.common.Barcode
-import com.varani.isitvegan.MainActivity.Companion.TAG
+import com.varani.isitvegan.domain.RetrieveProductDataUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /**
  * Created by Ana Varani on 29/03/2023.
  */
-class BarcodeViewModel(barcode: Barcode) {
-    var boundingRect: Rect = barcode.boundingBox!!
+@HiltViewModel
+class BarcodeViewModel @Inject constructor(
+    private val retrieveProductDataUseCase: RetrieveProductDataUseCase
+) : ViewModel() {
+    lateinit var boundingRect: Rect
     var barcodeContent: String = ""
     var barcodeTouchCallback = { v: View, e: MotionEvent -> false } //no-op
 
-    init {
+    fun readBarcode(barcode: Barcode) {
+        boundingRect = barcode.boundingBox!!
         when (barcode.valueType) {
             Barcode.TYPE_URL -> {
                 barcodeContent = barcode.url!!.url!!
@@ -37,12 +47,13 @@ class BarcodeViewModel(barcode: Barcode) {
                 if (barcode.rawValue.toString().isNotEmpty()) {
                     Log.d(TAG, "Product: ${barcode.rawValue.toString()}")
                     barcodeContent = "Product: ${barcode.rawValue.toString()}"
+
+                    viewModelScope.launch(Dispatchers.IO) {
+                        val result = retrieveProductDataUseCase(barcode.rawValue.toString())
+                        Log.d(TAG, "readBarcode: $result")
+                    }
                 }
             }
-//            else -> {
-//                qrContent = "Unsupported data type: ${barcode.rawValue.toString()}"
-//                Log.d(TAG, "Product: ${barcode.valueType}")
-//            }
         }
     }
 }
