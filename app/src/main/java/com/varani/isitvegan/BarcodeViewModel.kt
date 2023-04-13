@@ -26,7 +26,7 @@ class BarcodeViewModel @Inject constructor(
     var barcodeContent: String = ""
     var barcodeTouchCallback = { v: View, e: MotionEvent -> false } //no-op
 
-    fun readBarcode(barcode: Barcode) {
+    fun readBarcode(barcode: Barcode, onBarcodeRead: () -> Unit) {
         boundingRect = barcode.boundingBox!!
         when (barcode.valueType) {
             Barcode.TYPE_URL -> {
@@ -52,6 +52,7 @@ class BarcodeViewModel @Inject constructor(
                         val result = retrieveProductDataUseCase(barcode.rawValue.toString())
                         Log.d(TAG, "readBarcode: $result")
                     }
+                    onBarcodeRead.invoke()
                 }
             }
         }
