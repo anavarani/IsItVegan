@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Is it vegan"
-include ':app'
+include(":app")
