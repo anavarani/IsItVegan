@@ -9,9 +9,10 @@ androidxComposeUi = "1.4.0"
 androidxComposeMaterial = "1.4.0"
 androidxConstraintLayout = "2.1.4"
 androidxCore = "1.10.0"
+androidxEspresso = "3.5.0"
 androidxHiltNavigationCompose = "1.0.0"
 androidxNavigation = "2.5.3"
-androidxEspresso = "3.5.0"
+androidxRoom = "2.5.1"
 androidxTestExt = "1.1.4"
 hilt = "2.44.2"
 junit4 = "4.13.2"
@@ -31,6 +32,7 @@ androidx-camera-mlkit-vision = { group = "androidx.camera", name = "camera-mlkit
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "androidxCamera" }
 androidx-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "androidxComposeMaterial" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "androidxComposeUi" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidxCompose" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidxCompose" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "androidxCompose" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "androidxComposeUi" }
@@ -38,7 +40,10 @@ androidx-constraintLayout = { group = "androidx.constraintlayout", name = "const
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
-androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidxCompose" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidxRoom" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
+androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "androidxRoom" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }

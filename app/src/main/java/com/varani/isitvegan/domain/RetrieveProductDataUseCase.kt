@@ -1,7 +1,7 @@
 package com.varani.isitvegan.domain
 
-import com.varani.isitvegan.data.ProductRepository
-import com.varani.isitvegan.data.model.ProductDto
+import com.varani.isitvegan.data.repository.ProductRepository
+import com.varani.isitvegan.domain.model.Product
 import javax.inject.Inject
 
 /**
@@ -10,7 +10,7 @@ import javax.inject.Inject
 class RetrieveProductDataUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ) {
-    suspend operator fun invoke(barcode: String): ProductDto {
-        return productRepository.getProduct(barcode)
+    suspend operator fun invoke(barcode: String): Product? {
+        return productRepository.getProductByBarcode(barcode)
     }
 }

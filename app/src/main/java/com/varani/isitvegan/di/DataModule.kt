@@ -1,7 +1,7 @@
 package com.varani.isitvegan.di
 
-import com.varani.isitvegan.data.ProductRepository
-import com.varani.isitvegan.data.Repository
+import com.varani.isitvegan.data.repository.OfflineFirstProductRepository
+import com.varani.isitvegan.data.repository.ProductRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,5 +15,5 @@ import dagger.hilt.components.SingletonComponent
 interface DataModule {
 
     @Binds
-    fun bindProductRepository(productRepository: ProductRepository): Repository
+    fun bindProductRepository(offlineProductRepository: OfflineFirstProductRepository): ProductRepository
 }

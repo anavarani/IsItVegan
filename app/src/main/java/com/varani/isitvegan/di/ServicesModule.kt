@@ -1,6 +1,6 @@
 package com.varani.isitvegan.di
 
-import com.varani.isitvegan.data.ProductApi
+import com.varani.isitvegan.data.network.ProductNetworkDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,7 @@ object ServicesModule {
     @Provides
     fun provideProductApi(
         retrofit: Retrofit
-    ): ProductApi {
-        return retrofit.create(ProductApi::class.java)
+    ): ProductNetworkDataSource {
+        return retrofit.create(ProductNetworkDataSource::class.java)
     }
 }
