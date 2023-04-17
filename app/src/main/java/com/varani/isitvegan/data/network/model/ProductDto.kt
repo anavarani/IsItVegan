@@ -12,5 +12,16 @@ data class ProductDto(
     val barcode: String,
 
     @SerializedName(ProductNetworkDataSource.ApiKeys.INGREDIENTS_ANALYSIS_TAGS)
-    val ingredientsAnalysisTags: ArrayList<String>
+    val ingredientsAnalysisTags: ArrayList<String>,
+
+    @SerializedName(ProductNetworkDataSource.ApiKeys.PRODUCT_IMAGE)
+    val image: String,
+
+    @SerializedName(ProductNetworkDataSource.ApiKeys.INGREDIENTS_ANALYSIS)
+    val ingredientsAnalysis: IngredientAnalysisDto,
+)
+
+data class IngredientAnalysisDto(
+    @SerializedName(ProductNetworkDataSource.ApiKeys.INGREDIENTS_ANALYSIS_NON_VEGAN)
+    val nonVeganIngredients: ArrayList<String>?
 )

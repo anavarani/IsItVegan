@@ -10,8 +10,11 @@ interface ProductNetworkDataSource {
     suspend fun getProduct(@Path("barcode") barcode: String): BarcodeDto
 
     object ApiKeys {
-        const val INGREDIENTS_ANALYSIS_TAGS = "ingredients_analysis_tags"
-        const val BARCODE = "code"
         const val PRODUCT = "product"
+        const val BARCODE = "code"
+        const val INGREDIENTS_ANALYSIS_TAGS = "ingredients_analysis_tags"
+        const val INGREDIENTS_ANALYSIS = "ingredients_analysis"
+        const val INGREDIENTS_ANALYSIS_NON_VEGAN = "en:non-vegan"
+        const val PRODUCT_IMAGE = "image_front_url"
     }
 }

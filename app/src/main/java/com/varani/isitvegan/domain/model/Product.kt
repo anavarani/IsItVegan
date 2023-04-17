@@ -8,10 +8,14 @@ import com.varani.isitvegan.data.local.entities.ProductEntity
 data class Product(
 
     val barcode: String,
-    val ingredientsAnalysisTags: ArrayList<String>
+    val ingredientsAnalysisTags: ArrayList<String>,
+    val image: String,
+    val nonVeganIngredients: ArrayList<String>
 )
 
 fun ProductEntity.asExternalModel() = Product(
     barcode = barcode,
-    ingredientsAnalysisTags = ingredientsAnalysisTags
+    ingredientsAnalysisTags = ingredientsAnalysisTags,
+    image = image,
+    nonVeganIngredients = nonVeganIngredients
 )

@@ -6,5 +6,7 @@ package com.varani.isitvegan.navigation
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Scanner : Screen("barcodeScanner")
-    object ProductDetail : Screen("productDetail")
+    object ProductDetail : Screen("productDetail/{barcode}") {
+        fun createRoute(barcode: String) = "productDetail/$barcode"
+    }
 }

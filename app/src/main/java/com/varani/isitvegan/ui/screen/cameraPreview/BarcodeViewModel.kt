@@ -1,4 +1,4 @@
-package com.varani.isitvegan
+package com.varani.isitvegan.ui.screen.cameraPreview
 
 import android.content.Intent
 import android.graphics.Rect
@@ -9,7 +9,8 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.barcode.common.Barcode
-import com.varani.isitvegan.domain.RetrieveProductDataUseCase
+import com.varani.isitvegan.TAG
+import com.varani.isitvegan.domain.GetProductByBarcodeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,13 +21,13 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class BarcodeViewModel @Inject constructor(
-    private val retrieveProductDataUseCase: RetrieveProductDataUseCase
+    private val getProductByBarcodeUseCase: GetProductByBarcodeUseCase
 ) : ViewModel() {
     lateinit var boundingRect: Rect
     var barcodeContent: String = ""
     var barcodeTouchCallback = { v: View, e: MotionEvent -> false } //no-op
 
-    fun readBarcode(barcode: Barcode, onBarcodeRead: () -> Unit) {
+    fun readBarcode(barcode: Barcode, onBarcodeRead: (String) -> Unit) {
         boundingRect = barcode.boundingBox!!
         when (barcode.valueType) {
             Barcode.TYPE_URL -> {
@@ -49,10 +50,10 @@ class BarcodeViewModel @Inject constructor(
                     barcodeContent = "Product: ${barcode.rawValue.toString()}"
 
                     viewModelScope.launch(Dispatchers.IO) {
-                        val result = retrieveProductDataUseCase(barcode.rawValue.toString())
+                        val result = getProductByBarcodeUseCase(barcode.rawValue.toString())
                         Log.d(TAG, "readBarcode: $result")
                     }
-                    onBarcodeRead.invoke()
+                    onBarcodeRead.invoke(barcode.rawValue.toString())
                 }
             }
         }

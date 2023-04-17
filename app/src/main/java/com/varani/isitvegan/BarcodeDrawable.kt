@@ -2,6 +2,7 @@ package com.varani.isitvegan
 
 import android.graphics.*
 import android.graphics.drawable.Drawable
+import com.varani.isitvegan.ui.screen.cameraPreview.BarcodeViewModel
 
 /**
  * Created by Ana Varani on 29/03/2023.

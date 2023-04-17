@@ -18,11 +18,9 @@ class OfflineFirstProductRepository @Inject constructor(
 
     override suspend fun getProductByBarcode(barcode: String): Product? {
         if (productDao.getProductByBarcode(barcode) == null) {
+            Log.d(TAG, "getProductByBarcode from network: $barcode")
             val barcodeDto = network.getProduct(barcode)
             productDao.insert(barcodeDto.product.toEntity())
-            Log.d(TAG, "Read from network")
-        } else {
-            Log.d(TAG, "Read from database")
         }
         return productDao.getProductByBarcode(barcode)?.asExternalModel()
     }

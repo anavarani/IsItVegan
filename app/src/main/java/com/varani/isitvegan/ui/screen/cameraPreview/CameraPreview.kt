@@ -20,7 +20,6 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.common.util.concurrent.ListenableFuture
 import com.varani.isitvegan.BarcodeAnalyser
-import com.varani.isitvegan.BarcodeViewModel
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -30,7 +29,7 @@ import java.util.concurrent.Executors
 @ExperimentalGetImage
 @Composable
 fun CameraPreview(
-    onBarcodeRead: () -> Unit,
+    onBarcodeRead: (String) -> Unit,
     viewModel: BarcodeViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current

@@ -18,21 +18,33 @@ data class ProductEntity(
     val barcode: String,
 
     @ColumnInfo(name = INGREDIENTS_TAGS_COLUMN)
-    val ingredientsAnalysisTags: ArrayList<String>
+    val ingredientsAnalysisTags: ArrayList<String>,
+
+    @ColumnInfo(name = PRODUCT_IMAGE_URL_COLUMN)
+    val image: String,
+
+    @ColumnInfo(name = NON_VEGAN_INGREDIENTS_COLUMN)
+    val nonVeganIngredients: ArrayList<String>
 ) {
     companion object {
         const val PRODUCT_TABLE = "product"
         const val BARCODE_COLUMN = "barcode"
         const val INGREDIENTS_TAGS_COLUMN = "ingredients_tags"
+        const val NON_VEGAN_INGREDIENTS_COLUMN = "non_vegan_ingredients"
+        const val PRODUCT_IMAGE_URL_COLUMN = "product_image_url"
     }
 }
 
 fun ProductDto.toEntity() = ProductEntity(
     barcode = barcode,
-    ingredientsAnalysisTags = ingredientsAnalysisTags
+    ingredientsAnalysisTags = ingredientsAnalysisTags,
+    image = image,
+    nonVeganIngredients = ingredientsAnalysis.nonVeganIngredients ?: ArrayList()
 )
 
 fun Product.toEntity() = ProductEntity(
     barcode = barcode,
-    ingredientsAnalysisTags = ingredientsAnalysisTags
+    ingredientsAnalysisTags = ingredientsAnalysisTags,
+    image = image,
+    nonVeganIngredients = nonVeganIngredients
 )
