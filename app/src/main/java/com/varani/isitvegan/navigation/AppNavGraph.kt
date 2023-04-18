@@ -2,6 +2,7 @@ package com.varani.isitvegan.navigation
 
 import androidx.camera.core.ExperimentalGetImage
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,8 +15,12 @@ import com.varani.isitvegan.ui.screen.productDetail.ProductDetailScreen
  */
 @ExperimentalGetImage
 @Composable
-fun AppNavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screen.Home.route) {
+fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.route,
+        modifier = modifier
+    ) {
         composable(route = Screen.Home.route) {
             HomeScreen(
                 onScanBarcodeClick = { navController.navigate(Screen.Scanner.route) }
