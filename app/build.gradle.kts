@@ -81,6 +81,8 @@ dependencies {
     implementation(libs.accompanist.permissions)
     implementation(libs.androidx.constraintLayout)
 
+    implementation(libs.play.services.code.scanner)
+
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
     kapt(libs.androidx.room.compiler)

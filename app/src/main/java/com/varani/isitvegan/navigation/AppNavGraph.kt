@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.varani.isitvegan.ui.screen.cameraPreview.CameraPreview
+import com.varani.isitvegan.ui.screen.scanner.ScannerScreen
 import com.varani.isitvegan.ui.screen.home.HomeScreen
 import com.varani.isitvegan.ui.screen.productDetail.ProductDetailScreen
 
@@ -27,7 +27,7 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
             )
         }
         composable(route = Screen.Scanner.route) {
-            CameraPreview(
+            ScannerScreen(
                 onBarcodeRead = { barcode ->
                     navController.navigate(Screen.ProductDetail.createRoute(barcode))
                 }
