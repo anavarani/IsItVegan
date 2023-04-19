@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.varani.isitvegan.R
 import com.varani.isitvegan.ui.components.AccessibleImage
+import com.varani.isitvegan.ui.theme.DarkGreenGray10
 
 /**
  * Created by Ana Varani on 13/04/2023.
@@ -46,16 +47,17 @@ fun ProductDetailScreen(
 fun ProductDetailCard(productDetail: ProductDetail) {
     Surface(
         modifier = Modifier
-            .padding(16.dp)
-            .background(
-                color = Color.White
-            ),
+            .padding(16.dp),
         shape = MaterialTheme.shapes.small,
-        elevation = 6.dp
+        elevation = 12.dp
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .background(
+                    color = DarkGreenGray10
+                )
         ) {
 
             Box(
@@ -90,20 +92,22 @@ fun ProductDetailCard(productDetail: ProductDetail) {
 
             Spacer(modifier = Modifier.padding(top = 16.dp))
 
-            Text(
-                text = stringResource(id = R.string.non_vegan_ingredients_title),
-                textAlign = TextAlign.Center,
-                style = TextStyle(
-                    fontSize = 20.sp
+            if (productDetail.nonVeganIngredients.isNotEmpty()) {
+                Text(
+                    text = stringResource(id = R.string.non_vegan_ingredients_title),
+                    textAlign = TextAlign.Center,
+                    style = TextStyle(
+                        fontSize = 20.sp
+                    )
                 )
-            )
-            Text(
-                text = productDetail.nonVeganIngredients.joinToString("\n"),
-                textAlign = TextAlign.Center,
-                style = TextStyle(
-                    fontSize = 14.sp
+                Text(
+                    text = productDetail.nonVeganIngredients.joinToString("\n"),
+                    textAlign = TextAlign.Center,
+                    style = TextStyle(
+                        fontSize = 14.sp
+                    )
                 )
-            )
+            }
 
             Spacer(modifier = Modifier.padding(top = 16.dp))
         }
@@ -118,10 +122,10 @@ fun ProductDetailCardPreview() {
         "",
         "123123123123",
         AccessibleImage(
-            R.drawable.not_vegan_logo,
+            R.drawable.not_vegan,
             R.string.not_vegan_logo_content_description
         ),
-        listOf("leite", "ovo")
+        listOf("milk", "egg")
     )
 
     ProductDetailCard(productDetail = productDetail)

@@ -19,15 +19,20 @@ fun Product?.mapToProductDetail(): ProductDetail {
         ProductDetail(
             "",
             barcode,
-            if (ingredientsAnalysisTags.contains("non-vegan")) { // TODO fix
+            if (ingredientsAnalysisTags.contains("en:vegan")) { // TODO fix
                 AccessibleImage(
-                    R.drawable.vegan_logo,
+                    R.drawable.vegan,
                     R.string.vegan_logo_content_description
+                )
+            } else if (ingredientsAnalysisTags.contains("en:non-vegan")) {
+                AccessibleImage(
+                    R.drawable.not_vegan,
+                    R.string.not_vegan_logo_content_description
                 )
             } else {
                 AccessibleImage(
-                    R.drawable.not_vegan_logo,
-                    R.string.not_vegan_logo_content_description
+                    R.drawable.unknown,
+                    R.string.unknown_logo_content_description
                 )
             },
             nonVeganIngredients.map {
@@ -40,10 +45,10 @@ fun Product?.mapToProductDetail(): ProductDetail {
             "123",
             // TODO temporary default product
             AccessibleImage(
-                R.drawable.not_vegan_logo,
-                R.string.not_vegan_logo_content_description
+                R.drawable.unknown,
+                R.string.unknown_logo_content_description
             ),
-            listOf("not found")
+            listOf()
         )
     }
 }

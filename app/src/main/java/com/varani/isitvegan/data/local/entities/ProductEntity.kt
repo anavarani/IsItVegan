@@ -37,9 +37,9 @@ data class ProductEntity(
 
 fun ProductDto.toEntity() = ProductEntity(
     barcode = barcode,
-    ingredientsAnalysisTags = ingredientsAnalysisTags,
+    ingredientsAnalysisTags = ingredientsAnalysisTags ?: ArrayList(),
     image = image,
-    nonVeganIngredients = ingredientsAnalysis.nonVeganIngredients ?: ArrayList()
+    nonVeganIngredients = ingredientsAnalysis?.nonVeganIngredients ?: ArrayList()
 )
 
 fun Product.toEntity() = ProductEntity(
