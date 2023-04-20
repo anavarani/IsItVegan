@@ -26,6 +26,7 @@ import com.varani.isitvegan.common.HistoryMock
  */
 @Composable
 fun HistoryScreen(
+    onItemClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HistoryViewModel = hiltViewModel(),
 ) {
@@ -40,7 +41,7 @@ fun HistoryScreen(
             is HistoryUiState.Products ->
                 HistoryTabContent(
                     historyList = (uiState as HistoryUiState.Products).scanProducts,
-                    onItemClick = { },
+                    onItemClick = onItemClick,
                     modifier = modifier.fillMaxSize(),
                 )
             is HistoryUiState.Empty -> HistoryEmptyScreen()
@@ -51,7 +52,7 @@ fun HistoryScreen(
 @Composable
 fun HistoryTabContent(
     historyList: List<History>,
-    onItemClick: () -> Unit,
+    onItemClick: (String) -> Unit,
     modifier: Modifier
 ) {
     LazyColumn(
@@ -64,7 +65,7 @@ fun HistoryTabContent(
             item(key = barcode) {
                 HistoryItem(
                     barcode = scannedItem.barcode,
-                    onClick = { onItemClick },
+                    onClick = { onItemClick(barcode) },
                     isVegan = scannedItem.nonVeganIngredients.isEmpty(),
                     productImageUrl = scannedItem.photoUrl,
                     modifier = modifier

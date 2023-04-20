@@ -30,12 +30,16 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
         composable(route = Screen.Scanner.route) {
             ScannerScreen(
                 onBarcodeRead = { barcode ->
-                    navController.navigate(Screen.ProductDetail.createRoute(barcode))
+                    navController.navigate(Screen.History.createRoute(barcode))
                 }
             )
         }
         composable(route = Screen.History.route) {
-            HistoryScreen()
+            HistoryScreen(
+                onItemClick = { barcode ->
+                    navController.navigate(Screen.ProductDetail.createRoute(barcode))
+                }
+            )
         }
         composable(route = Screen.ProductDetail.route) {
             ProductDetailScreen()
