@@ -1,7 +1,7 @@
 package com.varani.isitvegan.data.repository
 
 import android.util.Log
-import com.varani.isitvegan.TAG
+import com.varani.isitvegan.common.TAG
 import com.varani.isitvegan.data.local.dao.ProductDao
 import com.varani.isitvegan.data.local.entities.ProductEntity
 import com.varani.isitvegan.data.local.entities.toEntity

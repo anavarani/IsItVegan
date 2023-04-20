@@ -51,11 +51,16 @@ val items = listOf(
     BottomNavItem(
         name = R.string.home_tab,
         route = Screen.Home.route,
-        icon = R.drawable.baseline_home_24
+        icon = R.drawable.home_tab
     ),
     BottomNavItem(
         name = R.string.scan_tab,
         route = Screen.Scanner.route,
-        icon = R.drawable.baseline_qr_code_scanner_24
+        icon = R.drawable.barcode_scanner_tab
+    ),
+    BottomNavItem(
+        name = R.string.history_tab,
+        route = Screen.History.route,
+        icon = R.drawable.history_tab
     ),
 )

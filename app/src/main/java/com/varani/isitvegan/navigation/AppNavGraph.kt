@@ -6,9 +6,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.varani.isitvegan.ui.screen.scanner.ScannerScreen
+import com.varani.isitvegan.ui.screen.history.HistoryScreen
 import com.varani.isitvegan.ui.screen.home.HomeScreen
 import com.varani.isitvegan.ui.screen.productDetail.ProductDetailScreen
+import com.varani.isitvegan.ui.screen.scanner.ScannerScreen
 
 /**
  * Created by Ana Varani on 13/04/2023.
@@ -32,6 +33,9 @@ fun AppNavGraph(navController: NavHostController, modifier: Modifier) {
                     navController.navigate(Screen.ProductDetail.createRoute(barcode))
                 }
             )
+        }
+        composable(route = Screen.History.route) {
+            HistoryScreen()
         }
         composable(route = Screen.ProductDetail.route) {
             ProductDetailScreen()

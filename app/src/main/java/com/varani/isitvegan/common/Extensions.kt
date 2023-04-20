@@ -1,4 +1,4 @@
-package com.varani.isitvegan
+package com.varani.isitvegan.common
 
 /**
  * Created by Ana Varani on 04/04/2023.
