@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.okhttp.logging)
 
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.coil.compose)
 
     implementation(libs.mlkit.barcode.scanner)
     implementation(libs.androidx.camera.core)

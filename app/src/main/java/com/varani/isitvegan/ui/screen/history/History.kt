@@ -17,7 +17,7 @@ data class History(
 fun Product?.mapToHistoryItem(): History {
     return if (this != null) {
         History(
-            "",
+            image,
             barcode,
             if (ingredientsAnalysisTags.contains("en:vegan")) { // TODO fix
                 AccessibleImage(

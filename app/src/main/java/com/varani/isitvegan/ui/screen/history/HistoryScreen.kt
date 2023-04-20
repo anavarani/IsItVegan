@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
 import com.varani.isitvegan.R
 import com.varani.isitvegan.common.HistoryMock
 
@@ -55,7 +56,7 @@ fun HistoryTabContent(
 ) {
     LazyColumn(
         modifier = modifier
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 8.dp),
         contentPadding = PaddingValues(vertical = 8.dp),
     ) {
         historyList.forEach { scannedItem ->
@@ -81,7 +82,7 @@ fun HistoryItem(
     iconModifier: Modifier = Modifier,
     modifier: Modifier,
     onClick: () -> Unit,
-    itemSeparation: Dp = 16.dp,
+    itemSeparation: Dp = 12.dp,
 ) {
     Surface(
         modifier = Modifier
@@ -94,9 +95,9 @@ fun HistoryItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { onClick() }
-                .padding(vertical = itemSeparation),
+                .padding(itemSeparation),
         ) {
-            ProductPhoto(productImageUrl, iconModifier.size(64.dp))
+            ProductPhoto(productImageUrl, iconModifier.size(96.dp))
             Spacer(modifier = Modifier.width(16.dp))
             ProductContent(barcode, isVegan)
         }
@@ -105,7 +106,7 @@ fun HistoryItem(
 
 @Composable
 private fun ProductContent(name: String, isVegan: Boolean, modifier: Modifier = Modifier) {
-    Column(modifier) {
+    Column(modifier.fillMaxWidth()) {
         Text(
             text = name,
             style = MaterialTheme.typography.body1,
@@ -119,7 +120,16 @@ private fun ProductContent(name: String, isVegan: Boolean, modifier: Modifier = 
 
 @Composable
 fun ProductPhoto(productImageUrl: String, size: Modifier) {
-
+    Column(
+        modifier = size,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        AsyncImage(
+            model = productImageUrl,
+            contentDescription = null
+        )
+    }
 }
 
 @Composable
