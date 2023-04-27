@@ -15,16 +15,17 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
-    getAllScannedProductsUserCase: GetAllScannedProductsUserCase
+    getAllScannedProductsUserCase: GetAllScannedProductsUserCase,
 ) : ViewModel() {
 
     val uiState: StateFlow<HistoryUiState> =
-        getAllScannedProductsUserCase().map(
-            HistoryUiState::Products,
-        ).stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000),
-            initialValue = HistoryUiState.Loading,
-        )
+        getAllScannedProductsUserCase()
+            .map {
+                HistoryUiState.Products(it)
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = HistoryUiState.Loading,
+            )
 }
-

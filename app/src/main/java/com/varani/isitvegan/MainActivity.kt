@@ -3,20 +3,18 @@ package com.varani.isitvegan
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.camera.core.ExperimentalGetImage
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.varani.isitvegan.navigation.AppNavGraph
-import com.varani.isitvegan.navigation.Screen
-import com.varani.isitvegan.ui.components.BottomNavItem
+import com.varani.isitvegan.navigation.AppNavState
 import com.varani.isitvegan.ui.components.BottomNavigationBar
 import com.varani.isitvegan.ui.theme.IsItVeganTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@ExperimentalGetImage
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -32,35 +30,21 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@ExperimentalGetImage
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IsItVeganApp() {
     val navController = rememberNavController()
+    val appNavState = AppNavState(navController)
+
     Scaffold(
         bottomBar = {
-            BottomNavigationBar(items, navController) {
-                navController.navigate(it.route)
-            }
+            BottomNavigationBar(
+                appNavState.destinations,
+                appNavState::navigateToDestination,
+                appNavState.currentDestination
+            )
         }
     ) { innerPadding ->
         AppNavGraph(navController, Modifier.padding(innerPadding))
     }
 }
-
-val items = listOf(
-    BottomNavItem(
-        name = R.string.home_tab,
-        route = Screen.Home.route,
-        icon = R.drawable.home_tab
-    ),
-    BottomNavItem(
-        name = R.string.scan_tab,
-        route = Screen.Scanner.route,
-        icon = R.drawable.barcode_scanner_tab
-    ),
-    BottomNavItem(
-        name = R.string.history_tab,
-        route = Screen.History.route,
-        icon = R.drawable.history_tab
-    ),
-)

@@ -3,10 +3,10 @@ package com.varani.isitvegan.ui.screen.history
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -37,7 +37,13 @@ fun HistoryScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         when (uiState) {
-            HistoryUiState.Loading -> CircularProgressIndicator()
+            HistoryUiState.Loading ->
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    CircularProgressIndicator()
+                }
             is HistoryUiState.Products ->
                 HistoryTabContent(
                     historyList = (uiState as HistoryUiState.Products).scanProducts,
@@ -60,18 +66,20 @@ fun HistoryTabContent(
             .padding(horizontal = 8.dp),
         contentPadding = PaddingValues(vertical = 8.dp),
     ) {
-        historyList.forEach { scannedItem ->
-            val barcode = scannedItem.barcode
-            item(key = barcode) {
+        items(
+            count = historyList.size,
+            key = { historyList[it].barcode },
+            itemContent = { index ->
+                val scannedItem = historyList[index]
                 HistoryItem(
                     barcode = scannedItem.barcode,
-                    onClick = { onItemClick(barcode) },
+                    onClick = { onItemClick(scannedItem.barcode) },
                     isVegan = scannedItem.nonVeganIngredients.isEmpty(),
                     productImageUrl = scannedItem.photoUrl,
                     modifier = modifier
                 )
             }
-        }
+        )
     }
 }
 
@@ -89,7 +97,7 @@ fun HistoryItem(
         modifier = Modifier
             .padding(8.dp),
         shape = MaterialTheme.shapes.small,
-        elevation = 12.dp
+        tonalElevation = 12.dp
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -110,11 +118,11 @@ private fun ProductContent(name: String, isVegan: Boolean, modifier: Modifier = 
     Column(modifier.fillMaxWidth()) {
         Text(
             text = name,
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.bodyMedium,
         )
         Text(
             text = if (isVegan) "VEGAN" else "NOT VEGAN",
-            style = MaterialTheme.typography.body2,
+            style = MaterialTheme.typography.bodyMedium,
         )
     }
 }

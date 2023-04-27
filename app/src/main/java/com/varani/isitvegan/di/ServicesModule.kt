@@ -10,6 +10,7 @@ import com.varani.isitvegan.data.network.ProductNetworkDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 
@@ -19,11 +20,6 @@ import retrofit2.Retrofit
 @Module
 @InstallIn(SingletonComponent::class)
 object ServicesModule {
-
-    @Provides
-    fun provideContext(app: Application): Context {
-        return app.applicationContext
-    }
 
     @Provides
     fun provideProductApi(
@@ -41,7 +37,7 @@ object ServicesModule {
 
     @Provides
     fun provideBarcodeScanner(
-        context: Context,
+        @ApplicationContext context: Context,
         options: GmsBarcodeScannerOptions
     ): GmsBarcodeScanner {
         return GmsBarcodeScanning.getClient(context, options)

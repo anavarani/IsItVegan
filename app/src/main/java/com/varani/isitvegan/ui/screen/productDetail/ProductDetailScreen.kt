@@ -1,12 +1,11 @@
 package com.varani.isitvegan.ui.screen.productDetail
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.varani.isitvegan.R
 import com.varani.isitvegan.ui.components.AccessibleImage
-import com.varani.isitvegan.ui.theme.DarkGreenGray10
 
 /**
  * Created by Ana Varani on 13/04/2023.
@@ -35,7 +33,13 @@ fun ProductDetailScreen(
     val productDetailUiState by viewModel.uiState.collectAsState()
 
     when (productDetailUiState) {
-        ProductDetailUiState.Loading -> CircularProgressIndicator()
+        ProductDetailUiState.Loading ->
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator()
+            }
         is ProductDetailUiState.Success -> {
             ProductDetailCard((productDetailUiState as ProductDetailUiState.Success).productDetail)
         }
@@ -48,15 +52,11 @@ fun ProductDetailCard(productDetail: ProductDetail) {
         modifier = Modifier
             .padding(16.dp),
         shape = MaterialTheme.shapes.small,
-        elevation = 12.dp
+        tonalElevation = 12.dp
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .background(
-                    color = DarkGreenGray10
-                )
         ) {
 
             Box(
