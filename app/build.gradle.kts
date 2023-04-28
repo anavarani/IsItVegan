@@ -64,6 +64,7 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:network"))
     implementation(project(":core:domain"))
+    implementation(project(":core:testing"))
 
     implementation(libs.androidx.core.ktx)
 
