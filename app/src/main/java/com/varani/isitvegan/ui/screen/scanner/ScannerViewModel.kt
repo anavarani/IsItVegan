@@ -20,9 +20,9 @@ class ScannerViewModel @Inject constructor(
     private val network: ProductNetworkDataSource
 ) : ViewModel() {
 
-    fun scanBarcode(onBarcodeRead: (String) -> Unit) {
+    fun scanBarcode(onBackClick: () -> Unit, onBarcodeRead: (String) -> Unit) {
         viewModelScope.launch {
-            scannerRepository.startScanning().collect {
+            scannerRepository.startScanning(onBackClick).collect {
                 if (!it.isNullOrBlank()) {
                     updateDb(it)
                     onBarcodeRead(it)

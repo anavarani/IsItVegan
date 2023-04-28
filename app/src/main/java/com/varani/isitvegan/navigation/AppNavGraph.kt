@@ -20,7 +20,10 @@ fun AppNavGraph(
         modifier = modifier
     ) {
         homeScreen()
-        scannerScreen { navController.navigateToHistory() }
+        scannerScreen(
+            onBackClick = navController::popBackStack,
+            onBarcodeRead = { navController.navigateToHistory() }
+        )
         historyScreen(onItemClick = {})
     }
 }

@@ -14,8 +14,11 @@ const val scannerNavigationRoute = "scanner"
 fun NavController.navigateToScanner(navOptions: NavOptions? = null) =
     this.navigate(scannerNavigationRoute, navOptions)
 
-fun NavGraphBuilder.scannerScreen(onBarcodeRead: (String) -> Unit) {
+fun NavGraphBuilder.scannerScreen(
+    onBackClick: () -> Unit,
+    onBarcodeRead: (String) -> Unit
+) {
     composable(route = scannerNavigationRoute) {
-        ScannerScreen(onBarcodeRead = onBarcodeRead)
+        ScannerScreen(onBackClick = onBackClick, onBarcodeRead = onBarcodeRead)
     }
 }

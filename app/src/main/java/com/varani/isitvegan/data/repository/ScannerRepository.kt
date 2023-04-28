@@ -17,7 +17,7 @@ class ScannerRepository @Inject constructor(
     private val scanner: GmsBarcodeScanner,
 ) {
 
-    suspend fun startScanning(): Flow<String?> = callbackFlow {
+    suspend fun startScanning(onBackClick: () -> Unit): Flow<String?> = callbackFlow {
         scanner.startScan()
             .addOnSuccessListener {
                 launch {
@@ -26,6 +26,8 @@ class ScannerRepository @Inject constructor(
                 }
             }.addOnFailureListener {
                 it.printStackTrace()
+            }.addOnCanceledListener {
+                onBackClick.invoke()
             }
         awaitClose { }
     }

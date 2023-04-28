@@ -9,10 +9,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
  */
 @Composable
 fun ScannerScreen(
+    onBackClick: () -> Unit,
     onBarcodeRead: (String) -> Unit,
     viewModel: ScannerViewModel = hiltViewModel(),
 ) {
     LaunchedEffect(Unit) {
-        viewModel.scanBarcode(onBarcodeRead)
+        viewModel.scanBarcode(onBackClick, onBarcodeRead)
     }
 }
