@@ -1,4 +1,4 @@
-package com.varani.isitvegan.ui.screen.history
+package com.varani.history
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

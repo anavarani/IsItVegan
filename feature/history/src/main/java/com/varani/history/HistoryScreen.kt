@@ -1,4 +1,4 @@
-package com.varani.isitvegan.ui.screen.history
+package com.varani.history
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,8 +18,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.varani.isitvegan.R
-import com.varani.isitvegan.common.HistoryMock
+import com.varani.model.data.HistoryMock
 import com.varani.model.data.Product
 
 /**

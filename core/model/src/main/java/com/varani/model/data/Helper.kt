@@ -1,6 +1,4 @@
-package com.varani.isitvegan.common
-
-import com.varani.model.data.Product
+package com.varani.model.data
 
 /**
  * Created by Ana Varani on 20/04/2023.

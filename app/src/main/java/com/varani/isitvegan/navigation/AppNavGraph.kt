@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.varani.history.navigation.historyScreen
+import com.varani.history.navigation.navigateToHistory
 import com.varani.home.navigation.homeNavigationRoute
 import com.varani.home.navigation.homeScreen
 import com.varani.scanner.navigation.scannerScreen

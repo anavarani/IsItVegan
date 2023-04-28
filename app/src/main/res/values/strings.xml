@@ -5,5 +5,4 @@
     <string name="home_tab">Home</string>
     <string name="scan_tab">Scan</string>
     <string name="history_tab">History</string>
-    <string name="empty_history">Scan your first product!</string>
 </resources>

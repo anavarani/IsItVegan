@@ -1,4 +1,4 @@
-package com.varani.isitvegan.ui.screen.history
+package com.varani.history
 
 import com.varani.model.data.Product
 

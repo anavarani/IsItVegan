@@ -9,6 +9,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navOptions
+import com.varani.history.navigation.navigateToHistory
 import com.varani.home.navigation.navigateToHome
 import com.varani.isitvegan.R
 import com.varani.scanner.navigation.navigateToScanner

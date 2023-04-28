@@ -1,10 +1,10 @@
-package com.varani.isitvegan.navigation
+package com.varani.history.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.varani.isitvegan.ui.screen.history.HistoryScreen
+import com.varani.history.HistoryScreen
 
 /**
  * Created by Ana Varani on 27/04/2023.

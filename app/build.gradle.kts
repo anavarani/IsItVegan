@@ -55,6 +55,7 @@ dependencies {
 
     implementation(project(":feature:home"))
     implementation(project(":feature:scanner"))
+    implementation(project(":feature:history"))
 
     implementation(project(":core:data"))
     implementation(project(":core:database"))
@@ -80,7 +81,6 @@ dependencies {
     implementation(libs.okhttp.logging)
 
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.coil.compose)
 
     implementation(libs.accompanist.permissions)
     implementation(libs.androidx.constraintLayout)
