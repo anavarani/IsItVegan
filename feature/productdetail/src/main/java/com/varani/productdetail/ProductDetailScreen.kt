@@ -1,4 +1,4 @@
-package com.varani.isitvegan.ui.screen.productDetail
+package com.varani.productdetail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.varani.common.AccessibleImage
 import com.varani.domain.model.ProductDetail
-import com.varani.isitvegan.R
 
 /**
  * Created by Ana Varani on 13/04/2023.

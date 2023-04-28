@@ -1,4 +1,4 @@
-package com.varani.isitvegan.ui.screen.productDetail
+package com.varani.productdetail
 
 import com.varani.domain.model.ProductDetail
 

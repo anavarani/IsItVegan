@@ -56,6 +56,7 @@ dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:scanner"))
     implementation(project(":feature:history"))
+    implementation(project(":feature:productdetail"))
 
     implementation(project(":core:data"))
     implementation(project(":core:database"))

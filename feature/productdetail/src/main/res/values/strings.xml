@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="barcode_title">Barcode:</string>
+    <string name="non_vegan_ingredients_title">Non vegan ingredients:</string>
+</resources>
