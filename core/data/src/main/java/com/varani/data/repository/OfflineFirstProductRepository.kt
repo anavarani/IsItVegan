@@ -16,11 +16,15 @@ class OfflineFirstProductRepository @Inject constructor(
 ) : ProductRepository {
 
     override suspend fun getProductByBarcode(barcode: String): Product? {
+        updateWithBarcode(barcode)
+        return productDao.getProductByBarcode(barcode)?.asExternalModel()
+    }
+
+    override suspend fun updateWithBarcode(barcode: String) {
         if (productDao.getProductByBarcode(barcode) == null) {
             val barcodeDto = network.getProduct(barcode)
             productDao.insert(barcodeDto.productDto.toEntity())
         }
-        return productDao.getProductByBarcode(barcode)?.asExternalModel()
     }
 
     override fun getAllProductsStream() = productDao.getAllProducts().map {

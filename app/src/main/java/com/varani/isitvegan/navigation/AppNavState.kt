@@ -11,6 +11,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navOptions
 import com.varani.home.navigation.navigateToHome
 import com.varani.isitvegan.R
+import com.varani.scanner.navigation.navigateToScanner
 
 class AppNavState(
     private val navController: NavHostController,

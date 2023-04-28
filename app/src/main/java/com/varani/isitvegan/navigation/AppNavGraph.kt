@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.varani.home.navigation.homeNavigationRoute
 import com.varani.home.navigation.homeScreen
+import com.varani.scanner.navigation.scannerScreen
 
 /**
  * Created by Ana Varani on 13/04/2023.

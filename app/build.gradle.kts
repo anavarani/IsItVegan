@@ -54,6 +54,8 @@ android {
 dependencies {
 
     implementation(project(":feature:home"))
+    implementation(project(":feature:scanner"))
+
     implementation(project(":core:data"))
     implementation(project(":core:database"))
     implementation(project(":core:model"))

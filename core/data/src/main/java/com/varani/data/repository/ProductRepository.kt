@@ -7,6 +7,8 @@ interface ProductRepository {
 
     suspend fun getProductByBarcode(barcode: String): Product?
 
+    suspend fun updateWithBarcode(barcode: String)
+
     fun getAllProductsStream(): Flow<List<Product>>
 
     suspend fun insertProduct(product: Product)

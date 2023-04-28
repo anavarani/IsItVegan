@@ -1,4 +1,4 @@
-package com.varani.isitvegan.ui.screen.scanner
+package com.varani.scanner
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

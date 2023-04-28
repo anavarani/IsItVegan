@@ -1,11 +1,9 @@
-package com.varani.isitvegan.ui.screen.scanner
+package com.varani.scanner
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.varani.data.model.toEntity
+import com.varani.data.repository.OfflineFirstProductRepository
 import com.varani.data.repository.ScannerRepository
-import com.varani.database.dao.ProductDao
-import com.varani.network.ProductNetworkDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,8 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ScannerViewModel @Inject constructor(
     private val scannerRepository: ScannerRepository,
-    private val productDao: ProductDao,
-    private val network: ProductNetworkDataSource
+    private val productRepository: OfflineFirstProductRepository,
 ) : ViewModel() {
 
     fun scanBarcode(onBackClick: () -> Unit, onBarcodeRead: (String) -> Unit) {
@@ -31,12 +28,9 @@ class ScannerViewModel @Inject constructor(
         }
     }
 
-    private fun updateDb(it: String) {
+    private fun updateDb(barcode: String) {
         viewModelScope.launch {
-            if (productDao.getProductByBarcode(it) == null) {
-                val barcodeDto = network.getProduct(it)
-                productDao.insert(barcodeDto.productDto.toEntity())
-            }
+            productRepository.updateWithBarcode(barcode)
         }
     }
 }

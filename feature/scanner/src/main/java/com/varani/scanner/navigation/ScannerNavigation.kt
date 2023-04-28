@@ -1,10 +1,10 @@
-package com.varani.isitvegan.navigation
+package com.varani.scanner.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.varani.isitvegan.ui.screen.scanner.ScannerScreen
+import com.varani.scanner.ScannerScreen
 
 /**
  * Created by Ana Varani on 27/04/2023.
