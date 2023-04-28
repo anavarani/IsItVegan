@@ -1,5 +1,6 @@
 package com.varani.history
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,26 +13,36 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.varani.model.data.HistoryMock
 import com.varani.model.data.Product
+import com.varani.model.data.testProductsList
 
 /**
  * Created by Ana Varani on 20/04/2023.
  */
 @Composable
-fun HistoryScreen(
+fun HistoryRoute(
     onItemClick: (String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HistoryViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
+    HistoryScreen(uiState, onItemClick, modifier)
+}
+
+@VisibleForTesting
+@Composable
+internal fun HistoryScreen(
+    uiState: HistoryUiState,
+    onItemClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -40,17 +51,18 @@ fun HistoryScreen(
             HistoryUiState.Loading ->
                 Box(
                     contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .testTag("loadingWheel")
                 ) {
                     CircularProgressIndicator()
                 }
-            is HistoryUiState.Products ->
+            is HistoryUiState.Success ->
                 HistoryTabContent(
-                    historyList = (uiState as HistoryUiState.Products).scanProducts,
+                    historyList = uiState.scanProducts,
                     onItemClick = onItemClick,
                     modifier = modifier.fillMaxSize(),
                 )
-            is HistoryUiState.Empty -> HistoryEmptyScreen()
         }
     }
 }
@@ -141,16 +153,11 @@ fun ProductPhoto(productImageUrl: String, size: Modifier) {
     }
 }
 
-@Composable
-private fun HistoryEmptyScreen() {
-    Text(text = stringResource(id = R.string.empty_history))
-}
-
 @Preview(showBackground = true, widthDp = 360, heightDp = 720)
 @Composable
 fun HistoryTabContentPreview() {
     HistoryTabContent(
-        HistoryMock,
+        testProductsList,
         {},
         Modifier.fillMaxSize()
     )

@@ -8,9 +8,7 @@ import com.varani.model.data.Product
 sealed interface HistoryUiState {
     object Loading : HistoryUiState
 
-    data class Products(
+    data class Success(
         val scanProducts: List<Product>,
     ) : HistoryUiState
-
-    object Empty : HistoryUiState
 }

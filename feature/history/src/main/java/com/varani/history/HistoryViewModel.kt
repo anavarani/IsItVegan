@@ -21,7 +21,7 @@ class HistoryViewModel @Inject constructor(
     val uiState: StateFlow<HistoryUiState> =
         getAllScannedProductsUserCase()
             .map {
-                HistoryUiState.Products(it)
+                HistoryUiState.Success(it)
             }
             .stateIn(
                 scope = viewModelScope,
