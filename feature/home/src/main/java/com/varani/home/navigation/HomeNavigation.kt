@@ -1,10 +1,10 @@
-package com.varani.isitvegan.navigation
+package com.varani.home.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.varani.isitvegan.ui.screen.home.HomeScreen
+import com.varani.home.HomeScreen
 
 /**
  * Created by Ana Varani on 27/04/2023.

@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.varani.home.navigation.homeNavigationRoute
+import com.varani.home.navigation.homeScreen
 
 /**
  * Created by Ana Varani on 13/04/2023.
