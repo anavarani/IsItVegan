@@ -19,7 +19,7 @@ fun AppNavGraph(
         startDestination = startDestination,
         modifier = modifier
     ) {
-        homeScreen { navController.navigateToScanner() }
+        homeScreen()
         scannerScreen { navController.navigateToHistory() }
         historyScreen(onItemClick = {})
     }

@@ -15,8 +15,8 @@ const val homeNavigationRoute = "home"
 fun NavController.navigateToHome(navOptions: NavOptions? = null) =
     this.navigate(homeNavigationRoute, navOptions)
 
-fun NavGraphBuilder.homeScreen(onScanBarcodeClick: () -> Unit) {
+fun NavGraphBuilder.homeScreen() {
     composable(route = homeNavigationRoute) {
-        HomeScreen(onScanBarcodeClick = onScanBarcodeClick)
+        HomeScreen()
     }
 }

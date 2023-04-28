@@ -9,4 +9,5 @@
     <string name="scan_tab">Scan</string>
     <string name="history_tab">History</string>
     <string name="empty_history">Scan your first product!</string>
+    <string name="considerations">The data provided to you by this app are retrieved from the Open Food Facts database. No guarantees can be made for the accuracy, completeness, or reliability of the information provided. The data are provided “as is” and the originating source for the data (Open Food Facts) is not liable for any damages arising out of the use of the data.</string>
 </resources>
