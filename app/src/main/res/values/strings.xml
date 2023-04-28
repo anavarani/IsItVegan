@@ -2,9 +2,6 @@
     <string name="app_name">Is it vegan?</string>
     <string name="barcode_title">Barcode:</string>
     <string name="non_vegan_ingredients_title">Non vegan ingredients:</string>
-    <string name="vegan_logo_content_description">Image with a stamp written vegan</string>
-    <string name="not_vegan_logo_content_description">Image with a stamp written not vegan</string>
-    <string name="unknown_logo_content_description">Image with a stamp written unknown</string>
     <string name="home_tab">Home</string>
     <string name="scan_tab">Scan</string>
     <string name="history_tab">History</string>

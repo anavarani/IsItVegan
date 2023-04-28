@@ -1,23 +1,23 @@
-package com.varani.isitvegan.ui.screen.history
+package com.varani.domain.model
 
-import com.varani.isitvegan.R
-import com.varani.isitvegan.ui.components.AccessibleImage
+import com.varani.common.AccessibleImage
+import com.varani.domain.R
 import com.varani.model.data.Product
 
 /**
- * Created by Ana Varani on 20/04/2023.
+ * Created by Ana Varani on 15/04/2023.
  */
-data class History(
+data class ProductDetail(
     val photoUrl: String,
     val barcode: String,
     val veganClassification: AccessibleImage,
     val nonVeganIngredients: List<String>
 )
 
-fun Product?.mapToHistoryItem(): History {
+fun Product?.mapToProductDetail(): ProductDetail {
     return if (this != null) {
-        History(
-            image,
+        ProductDetail(
+            "",
             barcode,
             if (ingredientsAnalysisTags.contains("en:vegan")) { // TODO fix
                 AccessibleImage(
@@ -40,7 +40,7 @@ fun Product?.mapToHistoryItem(): History {
             }
         )
     } else {
-        History(
+        ProductDetail(
             "",
             "123",
             // TODO temporary default product

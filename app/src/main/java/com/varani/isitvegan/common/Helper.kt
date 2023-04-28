@@ -1,47 +1,33 @@
 package com.varani.isitvegan.common
 
-import com.varani.isitvegan.R
-import com.varani.isitvegan.ui.components.AccessibleImage
-import com.varani.isitvegan.ui.screen.history.History
+import com.varani.model.data.Product
 
 /**
  * Created by Ana Varani on 20/04/2023.
  */
 val HistoryMock = listOf(
-    History(
-        "",
+    Product(
         "123",
-        AccessibleImage(
-            R.drawable.unknown,
-            R.string.unknown_logo_content_description
-        ),
-        listOf()
+        arrayListOf("vegan"),
+        "https://images.openfoodfacts.org/images/products/304/692/002/2651/front_en.159.400.jpg",
+        arrayListOf()
     ),
-    History(
-        "",
-        "456",
-        AccessibleImage(
-            R.drawable.unknown,
-            R.string.unknown_logo_content_description
-        ),
-        listOf()
+    Product(
+        "123",
+        arrayListOf("vegan"),
+        "https://images.openfoodfacts.org/images/products/304/692/002/2651/front_en.159.400.jpg",
+        arrayListOf()
     ),
-    History(
-        "",
-        "789",
-        AccessibleImage(
-            R.drawable.unknown,
-            R.string.unknown_logo_content_description
-        ),
-        listOf()
+    Product(
+        "123",
+        arrayListOf("vegan"),
+        "https://images.openfoodfacts.org/images/products/304/692/002/2651/front_en.159.400.jpg",
+        arrayListOf()
     ),
-    History(
-        "",
-        "000",
-        AccessibleImage(
-            R.drawable.unknown,
-            R.string.unknown_logo_content_description
-        ),
-        listOf()
+    Product(
+        "123",
+        arrayListOf("vegan"),
+        "https://images.openfoodfacts.org/images/products/304/692/002/2651/front_en.159.400.jpg",
+        arrayListOf()
     )
 )

@@ -18,8 +18,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.varani.isitvegan.common.HistoryMock
 import com.varani.isitvegan.R
+import com.varani.isitvegan.common.HistoryMock
+import com.varani.model.data.Product
 
 /**
  * Created by Ana Varani on 20/04/2023.
@@ -57,7 +58,7 @@ fun HistoryScreen(
 
 @Composable
 fun HistoryTabContent(
-    historyList: List<History>,
+    historyList: List<Product>,
     onItemClick: (String) -> Unit,
     modifier: Modifier
 ) {
@@ -75,7 +76,7 @@ fun HistoryTabContent(
                     barcode = scannedItem.barcode,
                     onClick = { onItemClick(scannedItem.barcode) },
                     isVegan = scannedItem.nonVeganIngredients.isEmpty(),
-                    productImageUrl = scannedItem.photoUrl,
+                    productImageUrl = scannedItem.image,
                     modifier = modifier
                 )
             }

@@ -3,7 +3,7 @@ package com.varani.isitvegan.ui.screen.productDetail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.varani.isitvegan.domain.GetProductByBarcodeUseCase
+import com.varani.domain.GetProductByBarcodeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

@@ -1,8 +1,8 @@
-package com.varani.isitvegan.domain
+package com.varani.domain
 
 import com.varani.data.repository.ProductRepository
-import com.varani.isitvegan.ui.screen.productDetail.ProductDetail
-import com.varani.isitvegan.ui.screen.productDetail.mapToProductDetail
+import com.varani.domain.model.ProductDetail
+import com.varani.domain.model.mapToProductDetail
 import javax.inject.Inject
 
 /**

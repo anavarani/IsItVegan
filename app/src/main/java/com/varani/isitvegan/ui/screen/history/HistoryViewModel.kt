@@ -2,7 +2,7 @@ package com.varani.isitvegan.ui.screen.history
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.varani.isitvegan.domain.GetAllScannedProductsUserCase
+import com.varani.domain.GetAllScannedProductsUserCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

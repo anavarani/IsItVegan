@@ -19,8 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.varani.common.AccessibleImage
+import com.varani.domain.model.ProductDetail
 import com.varani.isitvegan.R
-import com.varani.isitvegan.ui.components.AccessibleImage
 
 /**
  * Created by Ana Varani on 13/04/2023.
@@ -121,8 +122,8 @@ fun ProductDetailCardPreview() {
         "",
         "123123123123",
         AccessibleImage(
-            R.drawable.not_vegan,
-            R.string.not_vegan_logo_content_description
+            com.varani.domain.R.drawable.not_vegan,
+            R.string.non_vegan_ingredients_title
         ),
         listOf("milk", "egg")
     )

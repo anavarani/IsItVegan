@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vegan_logo_content_description">Image with a stamp written vegan</string>
+    <string name="not_vegan_logo_content_description">Image with a stamp written not vegan</string>
+    <string name="unknown_logo_content_description">Image with a stamp written unknown</string>
+</resources>
