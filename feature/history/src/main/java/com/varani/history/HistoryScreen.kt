@@ -3,7 +3,8 @@ package com.varani.history
 import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.varani.model.data.Product
+import com.varani.model.data.VeganClassification
 import com.varani.model.data.testProductsList
 
 /**
@@ -73,7 +75,8 @@ fun HistoryTabContent(
     onItemClick: (String) -> Unit,
     modifier: Modifier
 ) {
-    LazyColumn(
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(100.dp),
         modifier = modifier
             .padding(horizontal = 8.dp),
         contentPadding = PaddingValues(vertical = 8.dp),
@@ -86,7 +89,7 @@ fun HistoryTabContent(
                 HistoryItem(
                     barcode = scannedItem.barcode,
                     onClick = { onItemClick(scannedItem.barcode) },
-                    isVegan = scannedItem.nonVeganIngredients.isEmpty(),
+                    veganClassification = scannedItem.getVeganClassification(),
                     productImageUrl = scannedItem.image,
                     modifier = modifier
                 )
@@ -98,7 +101,7 @@ fun HistoryTabContent(
 @Composable
 fun HistoryItem(
     barcode: String,
-    isVegan: Boolean,
+    veganClassification: VeganClassification,
     productImageUrl: String,
     iconModifier: Modifier = Modifier,
     modifier: Modifier,
@@ -111,29 +114,30 @@ fun HistoryItem(
         shape = MaterialTheme.shapes.small,
         tonalElevation = 12.dp
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { onClick() }
-                .padding(itemSeparation),
+                .padding(itemSeparation)
+                .aspectRatio(0.6f, true),
         ) {
             ProductPhoto(productImageUrl, iconModifier.size(96.dp))
-            Spacer(modifier = Modifier.width(16.dp))
-            ProductContent(barcode, isVegan)
+            Spacer(modifier = Modifier.height(8.dp))
+            ProductContent(barcode, veganClassification)
         }
     }
 }
 
 @Composable
-private fun ProductContent(name: String, isVegan: Boolean, modifier: Modifier = Modifier) {
-    Column(modifier.fillMaxWidth()) {
+private fun ProductContent(name: String, veganClassification: VeganClassification, modifier: Modifier = Modifier) {
+    Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = name,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodySmall,
         )
         Text(
-            text = if (isVegan) "VEGAN" else "NOT VEGAN",
+            text = veganClassification.text,
             style = MaterialTheme.typography.bodyMedium,
         )
     }

@@ -8,4 +8,23 @@ data class Product(
     val ingredientsAnalysisTags: ArrayList<String>,
     val image: String,
     val nonVeganIngredients: ArrayList<String>
-)
+) {
+    fun getVeganClassification(): VeganClassification {
+        return if (ingredientsAnalysisTags.contains("en:vegan")) {
+            VeganClassification.VEGAN
+        } else if (ingredientsAnalysisTags.contains("en:non-vegan")) {
+            VeganClassification.NON_VEGAN
+        } else if (ingredientsAnalysisTags.contains("en:maybe-vegan")) {
+            VeganClassification.MAYBE
+        } else {
+            VeganClassification.UNKNOWN
+        }
+    }
+}
+
+enum class VeganClassification(val text: String) {
+    VEGAN("Vegan"),
+    NON_VEGAN("Non vegan"),
+    MAYBE("Maybe vegan"),
+    UNKNOWN("Unknown")
+}
