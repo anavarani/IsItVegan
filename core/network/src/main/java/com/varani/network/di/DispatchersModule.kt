@@ -1,7 +1,7 @@
-package com.varani.isitvegan.di
+package com.varani.network.di
 
-import com.varani.data.network.Dispatcher
-import com.varani.data.network.IivDispatchers
+import com.varani.network.Dispatcher
+import com.varani.network.IivDispatchers
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

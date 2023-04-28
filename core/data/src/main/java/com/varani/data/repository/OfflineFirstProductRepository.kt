@@ -1,12 +1,12 @@
 package com.varani.data.repository
 
 import com.varani.data.model.toEntity
-import com.varani.data.network.ProductNetworkDataSource
 import com.varani.database.dao.ProductDao
 import com.varani.database.model.ProductEntity
 import com.varani.database.model.asExternalModel
 import com.varani.database.model.toEntity
 import com.varani.model.data.Product
+import com.varani.network.ProductNetworkDataSource
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class OfflineFirstProductRepository @Inject constructor(
     override suspend fun getProductByBarcode(barcode: String): Product? {
         if (productDao.getProductByBarcode(barcode) == null) {
             val barcodeDto = network.getProduct(barcode)
-            productDao.insert(barcodeDto.product.toEntity())
+            productDao.insert(barcodeDto.productDto.toEntity())
         }
         return productDao.getProductByBarcode(barcode)?.asExternalModel()
     }

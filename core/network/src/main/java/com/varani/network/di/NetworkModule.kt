@@ -1,4 +1,4 @@
-package com.varani.isitvegan.di
+package com.varani.network.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

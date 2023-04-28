@@ -1,4 +1,4 @@
-package com.varani.data.network
+package com.varani.network
 
 import javax.inject.Qualifier
 

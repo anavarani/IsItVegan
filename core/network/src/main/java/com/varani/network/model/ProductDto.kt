@@ -1,7 +1,7 @@
-package com.varani.data.network.model
+package com.varani.network.model
 
 import com.google.gson.annotations.SerializedName
-import com.varani.data.network.ProductNetworkDataSource
+import com.varani.network.ProductNetworkDataSource
 
 /**
  * Created by Ana Varani on 15/04/2023.
@@ -18,7 +18,7 @@ data class ProductDto(
     val image: String,
 
     @SerializedName(ProductNetworkDataSource.ApiKeys.INGREDIENTS_ANALYSIS)
-    val ingredientsAnalysis: IngredientAnalysisDto?,
+    val ingredientsAnalysisDto: IngredientAnalysisDto?,
 )
 
 data class IngredientAnalysisDto(

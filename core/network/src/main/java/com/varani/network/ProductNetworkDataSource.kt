@@ -1,6 +1,6 @@
-package com.varani.data.network
+package com.varani.network
 
-import com.varani.data.network.model.BarcodeDto
+import com.varani.network.model.BarcodeDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 

@@ -1,6 +1,6 @@
-package com.varani.isitvegan.di
+package com.varani.network.di
 
-import com.varani.data.network.ProductNetworkDataSource
+import com.varani.network.ProductNetworkDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

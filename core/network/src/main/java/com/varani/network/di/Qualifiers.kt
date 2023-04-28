@@ -1,4 +1,4 @@
-package com.varani.isitvegan.di
+package com.varani.network.di
 
 import javax.inject.Qualifier
 

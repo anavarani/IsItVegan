@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.varani.data"
+    namespace = "com.varani.network"
     compileSdk = 33
 
     defaultConfig {
@@ -36,15 +36,12 @@ android {
 
 dependencies {
 
-    implementation(project(":core:model"))
-    implementation(project(":core:database"))
-    implementation(project(":core:common"))
-    implementation(project(":core:network"))
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.logging)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-
-    implementation(libs.play.services.code.scanner)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
