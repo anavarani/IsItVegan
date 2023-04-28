@@ -54,6 +54,10 @@ android {
 dependencies {
 
     implementation(project(":feature:home"))
+    implementation(project(":core:data"))
+    implementation(project(":core:database"))
+    implementation(project(":core:model"))
+    implementation(project(":core:common"))
 
     implementation(libs.androidx.core.ktx)
 
@@ -76,13 +80,6 @@ dependencies {
 
     implementation(libs.accompanist.permissions)
     implementation(libs.androidx.constraintLayout)
-
-    implementation(libs.play.services.code.scanner)
-
-    implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.ktx)
 
     testImplementation(libs.junit4)
     testImplementation(libs.androidx.room.testing)

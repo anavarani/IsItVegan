@@ -2,10 +2,10 @@ package com.varani.isitvegan.ui.screen.scanner
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.varani.isitvegan.data.local.dao.ProductDao
-import com.varani.isitvegan.data.local.entities.toEntity
-import com.varani.isitvegan.data.network.ProductNetworkDataSource
-import com.varani.isitvegan.data.repository.ScannerRepository
+import com.varani.data.model.toEntity
+import com.varani.data.network.ProductNetworkDataSource
+import com.varani.data.repository.ScannerRepository
+import com.varani.database.dao.ProductDao
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

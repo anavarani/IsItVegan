@@ -1,8 +1,8 @@
 package com.varani.isitvegan.ui.screen.history
 
 import com.varani.isitvegan.R
-import com.varani.isitvegan.domain.model.Product
 import com.varani.isitvegan.ui.components.AccessibleImage
+import com.varani.model.data.Product
 
 /**
  * Created by Ana Varani on 20/04/2023.

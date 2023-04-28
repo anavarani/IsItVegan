@@ -1,6 +1,6 @@
 package com.varani.isitvegan.domain
 
-import com.varani.isitvegan.data.repository.ProductRepository
+import com.varani.data.repository.ProductRepository
 import com.varani.isitvegan.ui.screen.history.History
 import com.varani.isitvegan.ui.screen.history.mapToHistoryItem
 import kotlinx.coroutines.flow.Flow

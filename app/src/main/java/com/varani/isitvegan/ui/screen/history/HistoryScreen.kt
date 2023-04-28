@@ -18,8 +18,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
-import com.varani.isitvegan.R
 import com.varani.isitvegan.common.HistoryMock
+import com.varani.isitvegan.R
 
 /**
  * Created by Ana Varani on 20/04/2023.

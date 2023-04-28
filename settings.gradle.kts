@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "Is it vegan"
 include(":app")
 include(":feature:home")
+include(":core:data")
+include(":core:model")
+include(":core:database")
+include(":core:common")
