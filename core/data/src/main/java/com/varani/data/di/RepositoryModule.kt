@@ -1,6 +1,6 @@
 package com.varani.data.di
 
-import com.varani.data.repository.OfflineFirstProductRepository
+import com.varani.data.repository.LocalFirstProductRepository
 import com.varani.data.repository.ProductRepository
 import dagger.Binds
 import dagger.Module
@@ -15,5 +15,5 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoryModule {
 
     @Binds
-    fun bindProductRepository(offlineProductRepository: OfflineFirstProductRepository): ProductRepository
+    fun bindProductRepository(offlineProductRepository: LocalFirstProductRepository): ProductRepository
 }

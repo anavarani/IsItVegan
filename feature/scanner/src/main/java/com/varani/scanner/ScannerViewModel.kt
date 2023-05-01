@@ -2,7 +2,7 @@ package com.varani.scanner
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.varani.data.repository.OfflineFirstProductRepository
+import com.varani.data.repository.LocalFirstProductRepository
 import com.varani.data.repository.ScannerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ScannerViewModel @Inject constructor(
     private val scannerRepository: ScannerRepository,
-    private val productRepository: OfflineFirstProductRepository,
+    private val productRepository: LocalFirstProductRepository,
 ) : ViewModel() {
 
     fun scanBarcode(onBackClick: () -> Unit, onBarcodeRead: (String) -> Unit) {

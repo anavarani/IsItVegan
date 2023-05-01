@@ -10,7 +10,7 @@ import com.varani.network.ProductNetworkDataSource
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class OfflineFirstProductRepository @Inject constructor(
+class LocalFirstProductRepository @Inject constructor(
     private val productDao: ProductDao,
     private val network: ProductNetworkDataSource
 ) : ProductRepository {
