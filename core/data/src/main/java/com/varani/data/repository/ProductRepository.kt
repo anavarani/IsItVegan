@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
 
-    suspend fun getProductByBarcode(barcode: String): Product?
+    suspend fun getProductByBarcode(barcode: String): Flow<Product>
 
     suspend fun updateWithBarcode(barcode: String)
 

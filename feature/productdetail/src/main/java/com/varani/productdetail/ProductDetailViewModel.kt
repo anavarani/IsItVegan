@@ -5,10 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.varani.domain.GetProductByBarcodeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 /**
@@ -20,9 +18,12 @@ class ProductDetailViewModel @Inject constructor(
     getProductByBarcodeUseCase: GetProductByBarcodeUseCase
 ) : ViewModel() {
 
+    @OptIn(FlowPreview::class)
     val uiState: StateFlow<ProductDetailUiState> =
-        savedStateHandle.getStateFlow("barcode", "").map { barcode ->
-            ProductDetailUiState.Success(getProductByBarcodeUseCase(barcode))
+        savedStateHandle.getStateFlow("barcode", "").flatMapConcat { barcode ->
+            getProductByBarcodeUseCase(barcode).map {
+                ProductDetailUiState.Success(it)
+            }
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),

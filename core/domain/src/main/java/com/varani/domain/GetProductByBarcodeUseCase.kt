@@ -3,6 +3,7 @@ package com.varani.domain
 import com.varani.data.repository.ProductRepository
 import com.varani.domain.model.ProductDetail
 import com.varani.domain.model.mapToProductDetail
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
@@ -11,7 +12,7 @@ import javax.inject.Inject
 class GetProductByBarcodeUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ) {
-    suspend operator fun invoke(barcode: String): ProductDetail {
+    suspend operator fun invoke(barcode: String): Flow<ProductDetail> {
         return productRepository.getProductByBarcode(barcode).mapToProductDetail()
     }
 }

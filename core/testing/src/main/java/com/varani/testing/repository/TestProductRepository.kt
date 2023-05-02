@@ -5,6 +5,7 @@ import com.varani.model.data.Product
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.map
 
 /**
  * Created by Ana Varani on 28/04/2023.
@@ -14,8 +15,8 @@ class TestProductRepository : ProductRepository {
     private val productFlow: MutableSharedFlow<List<Product>> =
         MutableSharedFlow(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
 
-    override suspend fun getProductByBarcode(barcode: String): Product? {
-        TODO("Not yet implemented")
+    override suspend fun getProductByBarcode(barcode: String): Flow<Product> {
+        return productFlow.map { product -> product.find { it.barcode == barcode }!! }
     }
 
     override suspend fun updateWithBarcode(barcode: String) {
