@@ -42,7 +42,9 @@ android {
 
 dependencies {
 
-    implementation(project(":core:data"))
+    implementation(project(":core:model"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:testing"))
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

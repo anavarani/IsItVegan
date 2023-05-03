@@ -1,33 +1,26 @@
 package com.varani.data.repository
 
-import android.util.Log
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
-import com.varani.common.TAG
+import com.varani.domain.repository.ScannerRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * Created by Ana Varani on 19/04/2023.
- */
-class ScannerRepository @Inject constructor(
+class GmsScannerRepository @Inject constructor(
     private val scanner: GmsBarcodeScanner,
-) {
+) : ScannerRepository {
 
-    suspend fun startScanning(onBackClick: () -> Unit): Flow<String?> = callbackFlow {
+    override fun startScanning(): Flow<String?> = callbackFlow {
         scanner.startScan()
             .addOnSuccessListener {
                 launch {
-                    Log.d(TAG, "startScanning: ${it.displayValue}")
                     send(it.rawValue)
                 }
             }.addOnFailureListener {
                 it.printStackTrace()
-            }.addOnCanceledListener {
-                onBackClick.invoke()
             }
         awaitClose { }
     }
@@ -81,6 +74,5 @@ class ScannerRepository @Inject constructor(
                 "Couldn't determine"
             }
         }
-
     }
 }

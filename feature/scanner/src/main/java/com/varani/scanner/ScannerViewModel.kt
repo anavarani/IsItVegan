@@ -2,10 +2,13 @@ package com.varani.scanner
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.varani.data.repository.LocalFirstProductRepository
-import com.varani.data.repository.ScannerRepository
+import com.varani.domain.repository.ProductRepository
+import com.varani.domain.repository.ScannerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
 /**
@@ -13,24 +16,27 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class ScannerViewModel @Inject constructor(
-    private val scannerRepository: ScannerRepository,
-    private val productRepository: LocalFirstProductRepository,
+    scannerRepository: ScannerRepository,
+    productRepository: ProductRepository
 ) : ViewModel() {
 
-    fun scanBarcode(onBackClick: () -> Unit, onBarcodeRead: (String) -> Unit) {
-        viewModelScope.launch {
-            scannerRepository.startScanning(onBackClick).collect {
-                if (!it.isNullOrBlank()) {
-                    updateDb(it)
-                    onBarcodeRead(it)
+    val uiState: StateFlow<ScannerUiState> =
+        scannerRepository.startScanning().map {
+            if (!it.isNullOrEmpty()) {
+                // TODO to move to UseCase
+                try {
+                    productRepository.updateWithBarcode(it)
+                    ScannerUiState.Success(it)
+                } catch (e: Exception) {
+                    ScannerUiState.Error("Failed to search for barcode. Please try again later")
                 }
+            } else {
+                ScannerUiState.Error("Try again")
             }
         }
-    }
-
-    private fun updateDb(barcode: String) {
-        viewModelScope.launch {
-            productRepository.updateWithBarcode(barcode)
-        }
-    }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = ScannerUiState.Loading,
+            )
 }

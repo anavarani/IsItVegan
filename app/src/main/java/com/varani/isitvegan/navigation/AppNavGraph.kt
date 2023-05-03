@@ -8,6 +8,7 @@ import com.varani.history.navigation.historyScreen
 import com.varani.history.navigation.navigateToHistory
 import com.varani.home.navigation.homeNavigationRoute
 import com.varani.home.navigation.homeScreen
+import com.varani.home.navigation.navigateToHome
 import com.varani.scanner.navigation.scannerScreen
 
 /**
@@ -26,8 +27,8 @@ fun AppNavGraph(
     ) {
         homeScreen()
         scannerScreen(
-            onBackClick = navController::popBackStack,
-            onBarcodeRead = { navController.navigateToHistory() }
+            onBarcodeRead = { navController.navigateToHistory() },
+            onBarcodeReadError = { navController.navigateToHome() },
         )
         historyScreen(onItemClick = {})
     }

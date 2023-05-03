@@ -1,4 +1,4 @@
-package com.varani.data.repository
+package com.varani.domain.repository
 
 import com.varani.model.data.Product
 import kotlinx.coroutines.flow.Flow

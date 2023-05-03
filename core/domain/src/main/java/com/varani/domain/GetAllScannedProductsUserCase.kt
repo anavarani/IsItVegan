@@ -1,6 +1,6 @@
 package com.varani.domain
 
-import com.varani.data.repository.ProductRepository
+import com.varani.domain.repository.ProductRepository
 import com.varani.model.data.Product
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

@@ -5,8 +5,11 @@ import com.varani.database.dao.ProductDao
 import com.varani.database.model.ProductEntity
 import com.varani.database.model.asExternalModel
 import com.varani.database.model.toEntity
+import com.varani.domain.repository.ProductRepository
 import com.varani.model.data.Product
 import com.varani.network.ProductNetworkDataSource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -15,9 +18,11 @@ class LocalFirstProductRepository @Inject constructor(
     private val network: ProductNetworkDataSource
 ) : ProductRepository {
 
-    override suspend fun getProductByBarcode(barcode: String): Product? {
+    override suspend fun getProductByBarcode(barcode: String): Flow<Product> {
         updateWithBarcode(barcode)
-        return productDao.getProductByBarcode(barcode)?.asExternalModel()
+        return flow {
+            productDao.getProductByBarcode(barcode)
+        }
     }
 
     override suspend fun updateWithBarcode(barcode: String) {

@@ -1,6 +1,6 @@
 package com.varani.domain
 
-import com.varani.data.repository.ProductRepository
+import com.varani.domain.repository.ProductRepository
 import com.varani.domain.model.ProductDetail
 import com.varani.domain.model.mapToProductDetail
 import kotlinx.coroutines.flow.Flow
