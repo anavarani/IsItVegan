@@ -1,6 +1,5 @@
-package com.varani.testing.repository
+package com.varani.domain.repository
 
-import com.varani.domain.repository.ProductRepository
 import com.varani.model.data.Product
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow

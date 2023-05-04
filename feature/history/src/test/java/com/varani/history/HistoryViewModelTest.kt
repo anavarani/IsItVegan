@@ -1,9 +1,9 @@
 package com.varani.history
 
 import com.varani.domain.GetAllScannedProductsUserCase
+import com.varani.domain.repository.TestProductRepository
 import com.varani.model.data.testProductsList
 import com.varani.testing.MainDispatcherRule
-import com.varani.testing.repository.TestProductRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
