@@ -19,7 +19,7 @@ data class ProductDetail(
 fun Flow<Product>.mapToProductDetail(): Flow<ProductDetail> {
     return this.map { product ->
         ProductDetail(
-            "",
+            product.image,
             product.barcode,
             if (product.ingredientsAnalysisTags.contains("en:vegan")) { // TODO fix
                 AccessibleImage(
