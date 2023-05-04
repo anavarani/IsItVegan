@@ -29,7 +29,7 @@ fun HomeScreen() {
                 modifier = Modifier.fillMaxSize().padding(32.dp)
             ) {
                 Text(
-                    text = stringResource(id = R.string.considerations),
+                    text = stringResource(id = R.string.disclaimer),
                     textAlign = TextAlign.Justify
                 )
             }
