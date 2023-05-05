@@ -1,3 +1,5 @@
+[![CI](https://github.com/anavarani/Is_it_vegan/actions/workflows/android.yml/badge.svg)](https://github.com/anavarani/Is_it_vegan/actions/workflows/android.yml)
+
 Is it vegan? App
 ==================
 
