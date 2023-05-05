@@ -26,18 +26,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          cache: 'gradle'
 
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
@@ -53,18 +42,7 @@ jobs:
         with:
           java-version: 11
           distribution: 'temurin'
-
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          cache: 'gradle'
 
       - name: Build debug APK
         run: bash ./gradlew assembleDebug --stacktrace
