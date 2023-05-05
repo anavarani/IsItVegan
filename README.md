@@ -1,7 +1,7 @@
 [![CI](https://github.com/anavarani/Is_it_vegan/actions/workflows/android.yml/badge.svg)](https://github.com/anavarani/Is_it_vegan/actions/workflows/android.yml)
 
 Is it vegan? App
-==================
+================
 
 **Is it vegan?** is an application to help vegans to find out whether a food is vegan or not by scanning its barcode.
 
@@ -11,7 +11,7 @@ It is a **work in progress** 🚧
 
 The app shows a label classification of a food which barcode was previously scanned through the **Scan** tab.
 
-All scanned products are saved on a local database and displayed on the **History** tab.
+All scanned products are saved on a local database and displayed on the **History** tab. 
 
 ## Screenshots
 
@@ -30,6 +30,7 @@ Open Food Facts API: [https://openfoodfacts.github.io/api-documentation/](https:
 The chosen design pattern for this app was MVVM, following the [official architecture guidance](https://developer.android.com/topic/architecture) from Google.
 
 This project applies techniques and best practices encouraged by Google for a Modern App Architecture development. They are:
+
 - Use a single-activity application.
 - Follow Unidirectional Data Flow (UDF).
 - Use agnostic ViewModels of the Android lifecycle.
