@@ -91,7 +91,6 @@ fun HistoryTabContent(
                     onClick = { onItemClick(scannedItem.barcode) },
                     veganClassification = scannedItem.getVeganClassification(),
                     productImageUrl = scannedItem.image,
-                    modifier = modifier
                 )
             }
         )
@@ -103,8 +102,6 @@ fun HistoryItem(
     barcode: String,
     veganClassification: VeganClassification,
     productImageUrl: String,
-    iconModifier: Modifier = Modifier,
-    modifier: Modifier,
     onClick: () -> Unit,
     itemSeparation: Dp = 12.dp,
 ) {
@@ -122,7 +119,7 @@ fun HistoryItem(
                 .padding(itemSeparation)
                 .aspectRatio(0.6f, true),
         ) {
-            ProductPhoto(productImageUrl, iconModifier.size(96.dp))
+            ProductPhoto(productImageUrl, Modifier.size(96.dp))
             Spacer(modifier = Modifier.height(8.dp))
             ProductContent(barcode, veganClassification)
         }
@@ -130,7 +127,11 @@ fun HistoryItem(
 }
 
 @Composable
-private fun ProductContent(name: String, veganClassification: VeganClassification, modifier: Modifier = Modifier) {
+private fun ProductContent(
+    name: String,
+    veganClassification: VeganClassification,
+    modifier: Modifier = Modifier
+) {
     Column(modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = name,
@@ -144,9 +145,9 @@ private fun ProductContent(name: String, veganClassification: VeganClassificatio
 }
 
 @Composable
-fun ProductPhoto(productImageUrl: String, size: Modifier) {
+fun ProductPhoto(productImageUrl: String, modifier: Modifier) {
     Column(
-        modifier = size,
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
