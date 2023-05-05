@@ -37,7 +37,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
@@ -45,6 +45,7 @@ dependencies {
 
     implementation(project(":core:model"))
     implementation(project(":core:domain"))
+    implementation(project(":core:network"))
     implementation(project(":core:testing"))
 
     implementation(libs.coil.compose)

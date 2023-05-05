@@ -32,7 +32,7 @@ class HistoryScreenKtTest {
     }
 
     @Test
-    fun topicTitle_whenTopicIsSuccess_isShown() {
+    fun productList_whenHistoryIsSuccess_isShown() {
         composeTestRule.setContent {
             HistoryScreen(
                 uiState = HistoryUiState.Success(testProductsList),
