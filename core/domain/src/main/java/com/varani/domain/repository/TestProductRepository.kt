@@ -14,12 +14,8 @@ class TestProductRepository : ProductRepository {
     private val productFlow: MutableSharedFlow<List<Product>> =
         MutableSharedFlow(replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST)
 
-    override suspend fun getProductByBarcode(barcode: String): Flow<Product> {
+    override fun getProductByBarcode(barcode: String): Flow<Product> {
         return productFlow.map { product -> product.find { it.barcode == barcode }!! }
-    }
-
-    override suspend fun updateWithBarcode(barcode: String) {
-        TODO("Not yet implemented")
     }
 
     override fun getAllProductsStream(): Flow<List<Product>> {
@@ -30,11 +26,19 @@ class TestProductRepository : ProductRepository {
         TODO("Not yet implemented")
     }
 
+    override suspend fun insertPendingProduct(barcode: String) {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun updateProduct(product: Product) {
         TODO("Not yet implemented")
     }
 
     override suspend fun deleteProduct(product: Product) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun sync(product: Product) {
         TODO("Not yet implemented")
     }
 

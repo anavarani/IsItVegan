@@ -23,9 +23,8 @@ class ScannerViewModel @Inject constructor(
     val uiState: StateFlow<ScannerUiState> =
         scannerRepository.startScanning().map {
             if (!it.isNullOrEmpty()) {
-                // TODO to move to UseCase
                 try {
-                    productRepository.updateWithBarcode(it)
+                    productRepository.insertPendingProduct(barcode = it)
                     ScannerUiState.Success(it)
                 } catch (e: Exception) {
                     ScannerUiState.Error("Failed to search for barcode. Please try again later")

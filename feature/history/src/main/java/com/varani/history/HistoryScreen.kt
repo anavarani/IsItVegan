@@ -153,7 +153,7 @@ fun ProductPhoto(productImageUrl: String, modifier: Modifier) {
     ) {
         AsyncImage(
             model = productImageUrl,
-            contentDescription = null
+            contentDescription = null,
         )
     }
 }

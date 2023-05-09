@@ -17,13 +17,19 @@ data class ProductEntity(
     val barcode: String,
 
     @ColumnInfo(name = INGREDIENTS_TAGS_COLUMN)
-    val ingredientsAnalysisTags: ArrayList<String>,
+    val ingredientsAnalysisTags: ArrayList<String> = arrayListOf(),
 
     @ColumnInfo(name = PRODUCT_IMAGE_URL_COLUMN)
-    val image: String,
+    val image: String = "",
 
     @ColumnInfo(name = NON_VEGAN_INGREDIENTS_COLUMN)
-    val nonVeganIngredients: ArrayList<String>
+    val nonVeganIngredients: ArrayList<String> = arrayListOf(),
+
+    @ColumnInfo(name = PENDING_SYNC)
+    val pendingSync: Boolean = false,
+
+    @ColumnInfo(name = CREATED_AT)
+    val createdAt: Long = System.currentTimeMillis(),
 ) {
     companion object {
         const val PRODUCT_TABLE = "product"
@@ -31,6 +37,8 @@ data class ProductEntity(
         const val INGREDIENTS_TAGS_COLUMN = "ingredients_tags"
         const val NON_VEGAN_INGREDIENTS_COLUMN = "non_vegan_ingredients"
         const val PRODUCT_IMAGE_URL_COLUMN = "product_image_url"
+        const val PENDING_SYNC = "pending_sync"
+        const val CREATED_AT = "created_at"
     }
 }
 

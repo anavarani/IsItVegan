@@ -1,7 +1,7 @@
 package com.varani.data.di
 
 import com.varani.data.repository.GmsScannerRepository
-import com.varani.data.repository.LocalFirstProductRepository
+import com.varani.data.repository.OfflineFirstProductRepository
 import com.varani.domain.repository.ProductRepository
 import com.varani.domain.repository.ScannerRepository
 import dagger.Binds
@@ -17,7 +17,7 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoryModule {
 
     @Binds
-    fun bindProductRepository(offlineProductRepository: LocalFirstProductRepository): ProductRepository
+    fun bindProductRepository(offlineProductRepository: OfflineFirstProductRepository): ProductRepository
 
     @Binds
     fun bindScannerRepository(scannerRepository: GmsScannerRepository): ScannerRepository

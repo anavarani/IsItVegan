@@ -20,8 +20,8 @@ interface ProductDao {
     suspend fun delete(product: ProductEntity)
 
     @Query("SELECT * from product WHERE barcode LIKE :barcode")
-    suspend fun getProductByBarcode(barcode: String): ProductEntity?
+    fun getProductByBarcode(barcode: String): Flow<ProductEntity>
 
-    @Query("SELECT * from product ORDER BY barcode DESC")
+    @Query("SELECT * from product ORDER BY created_at DESC")
     fun getAllProducts(): Flow<List<ProductEntity>>
 }
