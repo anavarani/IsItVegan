@@ -1,0 +1,1 @@
+No personal data stored
